@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Know Thy Destiny</title>
+      <link rel="stylesheet" href="node_modules/bulma/css/bulma.css" />
+   </head>
+   <body>
+      <nav class="navbar" role="navigation" aria-label="dropdown navigation">
+         <a class="navbar-item">
+         <img src="zodiac_icons/png/sagittarius-arrow-sign.png" width="112" height="112">
+         </a>
+         <div class="navbar-item has-dropdown is-active">
+            <a class="navbar-link">
+            Main Page
+            </a>
+            <div class="navbar-dropdown">
+               <a class="navbar-item" href="index.html">
+               Main Page
+               </a>
+               <hr class="navbar-divider">
+               <div class="navbar-item">
+                  Version 0.1.0
+               </div>
+            </div>
+         </div>
+      </nav>
+      <div id="login">
+         <div class="login-card">
+            <div class="card-title">
+               <h1>User Login</h1>
+            </div>
+            <div class="content">
+               <form id="login-form">
+                  <input id="email" type="email" name="email" title="email" placeholder="Email" required autofocus>
+                  <input id="password" type="password" name="password" title="password" placeholder="Password" required>
+                  <div class="field">
+                     <div class="control">
+                        <button type="submit" class="btn btn-primary">Login</button>
+                     </div>
+                  </div>
+                  <div class="field">
+                     <div class="control">
+                        <p id="message"></p>
+                     </div>
+                  </div>
+               </form>
+            </div>
+         </div>
+      </div>
+      <script src="node_modules/jquery/dist/jquery.js"></script>
+      <footer class="footer">
+        <div class="content has-text-centered">
+          <p>
+            <Strong>Icons </Strong> made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>
+          </p>
+        </div>
+      </footer>      
+   </body>
+</html>
