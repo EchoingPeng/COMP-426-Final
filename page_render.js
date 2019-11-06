@@ -21,7 +21,7 @@ export const renderZodiac = function(zodiac) {
                         <div class="content is-size-8" style="color: ${zodiac.color}; max-height: 200px; overflow-y: scroll">
                             <p>${zodiac.description}</p>
                         </div>
-                        <button class="button is-link is-small link" detail-zodiac="${zodiac.id}">More</button>
+                        <button class="button is-link is-small link" data-zodiac="${zodiac.id}">More</button>
                     </div>
                 </div>
             </div>
