@@ -46,4 +46,3 @@ export const loadCards = function(zodiacData) {
 $(function() {
     loadCards(zodiacData);
 });
-
