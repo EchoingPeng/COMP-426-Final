@@ -41,10 +41,14 @@ async function login() {
 
             $("input[value='Login']").attr('value', "Success")
             currentuser = result.data
+
+
+            localStorage.setItem('currentusername', currentuser.name);
+            localStorage.setItem('currentuserjwt', currentuser.jwt);
             console.log(currentuser)
         }
     } catch (error) {
-        console.log("haha")
+        console.log(error)
         $("input[value='Login']").attr('value', "Not Sucessful. Try Again.")
 
 
