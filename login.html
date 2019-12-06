@@ -31,25 +31,33 @@
             <div class="card-title">
                <h1>User Login</h1>
             </div>
-            <div class="content">
-               <form id="login-form">
-                  <input id="email" type="email" name="email" title="email" placeholder="Email" required autofocus>
-                  <input id="password" type="password" name="password" title="password" placeholder="Password" required>
-                  <div class="field">
-                     <div class="control">
-                        <button type="submit" class="btn btn-primary">Login</button>
-                     </div>
-                  </div>
-                  <div class="field">
-                     <div class="control">
-                        <p id="message"></p>
-                     </div>
-                  </div>
-               </form>
-            </div>
+            <div class="signup field">
+               <div class="content has-text-centered">
+                   <form class="loginForm">
+                       <input class="input" id="username" type = "username" placeholder="Enter an username" required><br>
+                       <input class="input" id="password" type="password" placeholder="Enter an password" required>
+                       
+                       <div id="signupBox" class="control content has-text-centered">
+                           <button type="submit" class="button signInButton">
+                               Login
+                           </button>
+                           <div id ="showSignIn">
+                               <a href="signup.html">New here? Click here to sign up!</a>
+                           </div>
+                       </div>
+                        <div class="field">
+                           <div class="control">
+                              <p id="loginMessage"></p>
+                           </div>
+                        </div>
+                   </form>
+               </div>
+           </div>
          </div>
       </div>
       <script src="node_modules/jquery/dist/jquery.js"></script>
+      <script src="node_modules/axios/dist/axios.js"></script>
+      <script src="login.js"></script>
       <footer class="footer">
         <div class="content has-text-centered">
           <p>
