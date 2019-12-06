@@ -4,7 +4,7 @@
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Know Thy Destiny</title>
-      <link rel="stylesheet" href="node_modules/bulma/css/bulma.css" />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css" />
    </head>
    <body>
       <nav class="navbar" role="navigation" aria-label="dropdown navigation">
@@ -26,29 +26,37 @@
             </div>
          </div>
       </nav>
-      <div id="login">
-         <div class="login-card">
+      <div id="signup">
+         <div class="signup-card">
             <div class="card-title">
-               <h1>User Login</h1>
+               <h1>User SignUp</h1>
             </div>
             <div class="signup field">
                <div class="content has-text-centered">
-                   <form class="loginForm">
-                       <input class="input" id="username" type = "username" placeholder="Enter an username" required><br>
+                   <form class="signupForm">
+                       <div id="errorBanner"></div>
+                       <input class="input" id="username" type = "username" placeholder="Enter an username" required>
+                       <br>
                        <input class="input" id="password" type="password" placeholder="Enter an password" required>
+                       <br>
+                       <input class="input" id="country" placeholder="Which country are you from?" required>
+                       <br>
+                       <input class="input" id="birthday" placeholder="Enter your birth date" required>
+                       <br>
                        
                        <div id="signupBox" class="control content has-text-centered">
-                           <button type="submit" class="button signInButton">
-                               Login
+                           <button type="submit" class="button signUpButton">
+                               Sign Up
                            </button>
-                           <div id ="showSignIn">
-                               <a href="signup.html">New here? Click here to sign up!</a>
+                           <div id ="showLogin">
+                               <a href="login.html">Already have an account? Click here to sign in!</a>
                            </div>
                        </div>
-                        <div class="field">
-                           <div class="control">
-                              <p id="loginMessage"></p>
-                           </div>
+
+                       <div class="field">
+                            <div class="control">
+                                <p id="signUpMessage"></p>
+                            </div>
                         </div>
                    </form>
                </div>
