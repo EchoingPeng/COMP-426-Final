@@ -20,6 +20,7 @@ async function showUser() {
 
         $("input[value='Submit']").on("click", UpdateUser)
 
+
     } catch (error) {
         $("input[value='Submit']").on("click", createUser)
 
@@ -47,6 +48,7 @@ async function createUser() {
         console.log(data)
         const result = await axios.post(`http://localhost:3000/user/record`, { data: data }, { headers: { "Authorization": "Bearer " + currentjwt } })
         console.log(result)
+        window.location.href = "../horoscope.html"
     } catch (error) {
 
     }
@@ -75,6 +77,7 @@ async function UpdateUser() {
         console.log(data)
         const result = await axios.post(`http://localhost:3000/user/record`, { data: data }, { headers: { "Authorization": "Bearer " + currentjwt } })
         console.log(result)
+        window.location.href = "../horoscope.html"
     } catch (error) {
         console.log(error)
     }

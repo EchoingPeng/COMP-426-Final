@@ -16,6 +16,7 @@ async function register() {
         console.log(result)
         if (result.status == 200) {
             $("input[value='Create account']").attr('value', "success")
+            window.location.href = "/user_info/"
         }
     } catch (error) {
         console.log("haha")
@@ -48,7 +49,7 @@ async function login() {
             localStorage.setItem('currentzodiac', currentuser.data.sign);
             localStorage.setItem('currentbirthday', currentuser.data.birthday);
             console.log(currentuser)
-            window.location.href = "/user_info/"
+            window.location.href = "horoscope.html"
         }
     } catch (error) {
         console.log(error)
@@ -103,4 +104,7 @@ $(document).ready(() => {
     $("input[value='Create account']").on('click', register);
     $("input[value='Login']").on('click', login);
 
+
+
+    // const  result  =  await  axios.get(`http://localhost:3000/private/record`,   {  headers:  {  "Authorization":   "Bearer "  +  localStorage.getItem('currentuserjwt')  }  })
 })
