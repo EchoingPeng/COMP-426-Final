@@ -38,7 +38,13 @@
         });
     }
     $('#reset').on('click', function() {
-        $('#register-form').reset();
+        // $('#register-form').trigger('reset');
+        $("#display_name").attr("value", "")
+        $("#zodi_sign").attr("value", "")
+        $("#country").attr("value", "")
+        $("#email").attr("value", "")
+        $("#gender").attr("value", "")
+        $(".noUi-tooltip").attr("value", "")
     });
 
     $('#register-form').validate({
