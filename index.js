@@ -45,6 +45,8 @@ async function login() {
 
             localStorage.setItem('currentusername', currentuser.name);
             localStorage.setItem('currentuserjwt', currentuser.jwt);
+            localStorage.setItem('currentzodiac', currentuser.data.sign);
+            localStorage.setItem('currentbirthday', currentuser.data.birthday);
             console.log(currentuser)
         }
     } catch (error) {

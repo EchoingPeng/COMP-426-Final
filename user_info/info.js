@@ -1,45 +1,90 @@
-async function updateUser() {
+async function showUser() {
 
     console.log(localStorage.getItem('currentusername'))
-    console.log(localStorage.getItem('currentuserjwt'))
+    console.log(localStorage)
+
+    $("#zodi_sign").attr("value", localStorage.getItem('currentzodiac'))
+
+    try {
+        const result = await axios.get(`http://localhost:3000/user/record`, { headers: { "Authorization": "Bearer " + localStorage.getItem('currentuserjwt') } })
+        let resultobj = result.data.result
+        console.log(result)
+
+        $("#display_name").attr("value", resultobj.displayname)
+        $("#zodi_sign").attr("value", resultobj.zodiasign)
+        $("#country").attr("value", resultobj.country)
+        $("#email").attr("value", resultobj.email)
+        $("#gender").attr("value", resultobj.gender)
+        $(".noUi-tooltip").attr("value", resultobj.displayname)
 
 
+        $("input[value='Submit']").on("click", UpdateUser)
 
-    const result = await axios.post(`http://localhost:3000/user/record`, { name: "1", data: "2123" }, { headers: { "Authorization": "Bearer " + localStorage.getItem('currentuserjwt') } })
-    console.log(result)
+    } catch (error) {
+        $("input[value='Submit']").on("click", createUser)
 
-    // username = $("#signup-username").val()
-    // email = $("#signup-email").val()
-    // passwords = $("#signup-password").val()
-    // birthday = $("#datepicker").datepicker('getDate')
-    // zodiacsign = getZodiacSign(birthday.getDate(), birthday.getMonth())
-
-    // console.log(zodiacsign)
-
-    // try {
-    //     const result = await axios.post(`http://localhost:3000/account/create`, { 'name': username, "pass": passwords, "data": { "birthday": birthday, "sign": zodiacsign } })
-    //     console.log(result)
-    //     if (result.status == 200) {
-    //         $("input[value='Create account']").attr('value', "success")
-    //     }
-    // } catch (error) {
-    //     console.log("haha")
-    //     $("input[value='Create account']").attr('value', "Not Sucessful. Try Again.")
+    }
 
 
+};
 
-    // }
-    // return result;
+async function createUser() {
+
+
+    currentuser = localStorage.getItem('currentusername')
+    currentjwt = localStorage.getItem('currentuserjwt')
+
+    displayname = $("#display_name").val()
+    zodiasign = $("#zodi_sign").val()
+    country = $("#country").val()
+    email = $("#email").val()
+    gender = $("#gender").val()
+    age = $(".noUi-tooltip").text()
+
+    console.log(zodiasign)
+    data = { displayname: displayname, zodiasign: zodiasign, country: country, email: email, gender: gender, age: age }
+    try {
+        console.log(data)
+        const result = await axios.post(`http://localhost:3000/user/record`, { data: data }, { headers: { "Authorization": "Bearer " + currentjwt } })
+        console.log(result)
+    } catch (error) {
+
+    }
+
+
 };
 
 
 
+async function UpdateUser() {
+    console.log("enter update")
+
+    currentuser = localStorage.getItem('currentusername')
+    currentjwt = localStorage.getItem('currentuserjwt')
+
+    displayname = $("#display_name").val()
+    zodiasign = $("#zodi_sign").val()
+    country = $("#country").val()
+    email = $("#email").val()
+    gender = $("#gender").val()
+    age = $(".noUi-tooltip").text()
+
+    // console.log(zodiasign)
+    data = { displayname: displayname, zodiasign: zodiasign, country: country, email: email, gender: gender, age: age }
+    try {
+        console.log(data)
+        const result = await axios.post(`http://localhost:3000/user/record`, { data: data }, { headers: { "Authorization": "Bearer " + currentjwt } })
+        console.log(result)
+    } catch (error) {
+        console.log(error)
+    }
+}
 
 
 $(document).ready(() => {
 
     const $root = $('body');
-    updateUser()
+    showUser()
 
 
 

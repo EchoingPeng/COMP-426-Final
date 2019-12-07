@@ -69,6 +69,41 @@
         "birthday": "2019-12-18T05:00:00.000Z",
         "sign": "scorpio"
       }
+    },
+    "me": {
+      "passwordHash": "$2b$10$wP0ju8cPlEmWIK18w0gfku/KDko47Itb/F4k9xwwpy4omQOh9sWHi",
+      "data": {
+        "birthday": "2019-12-11T05:00:00.000Z",
+        "sign": "scorpio"
+      }
+    },
+    "a": {
+      "passwordHash": "$2b$10$01jZkjNp7KqleaCGjyep2OnlPuaka.7s.FCg1wnANF.YvpRywnp16",
+      "data": {
+        "birthday": "2019-12-05T05:00:00.000Z",
+        "sign": "scorpio"
+      }
+    },
+    "b": {
+      "passwordHash": "$2b$10$UU3LNBKGqiN1QaQLh9qJWOrEo.x.n9qfFxFzV379NhHreBWYhwdY2",
+      "data": {
+        "birthday": "2019-12-05T05:00:00.000Z",
+        "sign": "scorpio"
+      }
+    },
+    "c": {
+      "passwordHash": "$2b$10$PGQ.NIxeK5ZiLLynGS31pe5ycLBHGReoqvEuGiMAbYMzMwZJ5Jxpe",
+      "data": {
+        "birthday": "2019-12-11T05:00:00.000Z",
+        "sign": "scorpio"
+      }
+    },
+    "d": {
+      "passwordHash": "$2b$10$IpHV6F3DZ.OX5r1u3I.tn.OYQdezv6VgtTllcZH90ENz30rtMzl0K",
+      "data": {
+        "birthday": "2019-12-11T05:00:00.000Z",
+        "sign": "scorpio"
+      }
     }
   }
 }
