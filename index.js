@@ -104,6 +104,13 @@ $(document).ready(() => {
     $("input[value='Create account']").on('click', register);
     $("input[value='Login']").on('click', login);
 
+    // async function getAllAuthors() {
+    //     const a = await axios.get("http://localhost:3000/public/zodiacData")
+    //     console.log(a);
+
+    // }
+
+    // getAllAuthors()
 
 
     // const  result  =  await  axios.get(`http://localhost:3000/private/record`,   {  headers:  {  "Authorization":   "Bearer "  +  localStorage.getItem('currentuserjwt')  }  })

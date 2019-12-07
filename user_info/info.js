@@ -15,8 +15,26 @@ async function showUser() {
         $("#country").attr("value", resultobj.country)
         $("#email").attr("value", resultobj.email)
         $("#gender").attr("value", resultobj.gender)
-        $(".noUi-tooltip").attr("value", resultobj.displayname)
+        $(".noUi-tooltip").attr("value", resultobj.age)
+        var marginSlider = document.getElementById('slider-margin');
+        if (marginSlider != undefined) {
+            console.log(resultobj.age)
+            noUiSlider.create(marginSlider, {
+                start: [resultobj.age],
+                step: 1,
+                connect: [true, false],
+                tooltips: [true],
+                range: {
+                    'min': 0,
+                    'max': 100
+                },
+                format: wNumb({
+                    decimals: 0,
+                    thousand: ','
 
+                })
+            });
+        }
 
         $("input[value='Submit']").on("click", UpdateUser)
 
@@ -88,7 +106,6 @@ $(document).ready(() => {
 
     const $root = $('body');
     showUser()
-
 
 
 

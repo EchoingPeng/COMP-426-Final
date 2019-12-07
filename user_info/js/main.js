@@ -19,24 +19,24 @@
         allOptions.toggle();
     });
 
-    var marginSlider = document.getElementById('slider-margin');
-    if (marginSlider != undefined) {
-        noUiSlider.create(marginSlider, {
-            start: [0],
-            step: 1,
-            connect: [true, false],
-            tooltips: [true],
-            range: {
-                'min': 0,
-                'max': 100
-            },
-            format: wNumb({
-                decimals: 0,
-                thousand: ','
+    // var marginSlider = document.getElementById('slider-margin');
+    // if (marginSlider != undefined) {
+    //     noUiSlider.create(marginSlider, {
+    //         start: [0],
+    //         step: 1,
+    //         connect: [true, false],
+    //         tooltips: [true],
+    //         range: {
+    //             'min': 0,
+    //             'max': 100
+    //         },
+    //         format: wNumb({
+    //             decimals: 0,
+    //             thousand: ','
 
-            })
-        });
-    }
+    //         })
+    //     });
+    // }
     $('#reset').on('click', function() {
         // $('#register-form').trigger('reset');
         $("#display_name").attr("value", "")
