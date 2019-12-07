@@ -111,6 +111,20 @@
         "birthday": "2019-12-05T05:00:00.000Z",
         "sign": "scorpio"
       }
+    },
+    "u": {
+      "passwordHash": "$2b$10$egWrnfBYTdV.h9dRnaAdMe9YGZ/HfK5daY7ODRW00ac9YT25sNYs6",
+      "data": {
+        "birthday": "2019-12-14T05:00:00.000Z",
+        "sign": "scorpio"
+      }
+    },
+    "u2": {
+      "passwordHash": "$2b$10$LbmZ12DWROkfhyfbXA/29.dr3vSSq5wqpUFJXhvfpm7HhqPcmdtOC",
+      "data": {
+        "birthday": "2019-08-14T04:00:00.000Z",
+        "sign": "cancer"
+      }
     }
   }
 }

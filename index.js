@@ -16,6 +16,14 @@ async function register() {
         console.log(result)
         if (result.status == 200) {
             $("input[value='Create account']").attr('value', "success")
+
+            const result = await axios.post(`http://localhost:3000/account/login`, { 'name': username, "pass": passwords })
+            currentuser = result.data
+            localStorage.setItem('currentusername', currentuser.name);
+            localStorage.setItem('currentuserjwt', currentuser.jwt);
+            localStorage.setItem('currentzodiac', currentuser.data.sign);
+            localStorage.setItem('currentbirthday', currentuser.data.birthday);
+
             window.location.href = "/user_info/"
         }
     } catch (error) {
@@ -48,8 +56,19 @@ async function login() {
             localStorage.setItem('currentuserjwt', currentuser.jwt);
             localStorage.setItem('currentzodiac', currentuser.data.sign);
             localStorage.setItem('currentbirthday', currentuser.data.birthday);
-            console.log(currentuser)
-            window.location.href = "horoscope.html"
+            console.log("Bearer "  +  localStorage.getItem('currentuserjwt') )
+
+
+            // post to private
+            // async function getprivate() {
+            //     const  result  =  await  axios.post(`http://localhost:3000/private/comments`, { data: { comment: "1" } },   {  headers:  {  "Authorization":   "Bearer "  +  localStorage.getItem('currentuserjwt')  }  })
+            //     console.log(result);
+
+            // }
+
+            // getprivate()
+
+            //window.location.href = "horoscope.html"
         }
     } catch (error) {
         console.log(error)
@@ -113,5 +132,6 @@ $(document).ready(() => {
     // getAllAuthors()
 
 
-    // const  result  =  await  axios.get(`http://localhost:3000/private/record`,   {  headers:  {  "Authorization":   "Bearer "  +  localStorage.getItem('currentuserjwt')  }  })
+
+
 })
