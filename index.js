@@ -48,6 +48,7 @@ async function login() {
             localStorage.setItem('currentzodiac', currentuser.data.sign);
             localStorage.setItem('currentbirthday', currentuser.data.birthday);
             console.log(currentuser)
+            window.location.href = "/user_info/"
         }
     } catch (error) {
         console.log(error)
