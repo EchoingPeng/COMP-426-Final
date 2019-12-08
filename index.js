@@ -9,7 +9,9 @@ async function register() {
     birthday = $("#datepicker").datepicker('getDate')
     zodiacsign = getZodiacSign(birthday.getDate(), birthday.getMonth())
 
-    console.log(zodiacsign)
+    console.log(zodiacsign);
+    console.log(birthday);
+    console.log(_calculateAge(birthday));
 
     try {
         const result = await axios.post(`http://localhost:3000/account/create`, { 'name': username, "pass": passwords, "data": { "birthday": birthday, "sign": zodiacsign } })
@@ -24,11 +26,13 @@ async function register() {
             localStorage.setItem('currentzodiac', currentuser.data.sign);
             localStorage.setItem('currentbirthday', currentuser.data.birthday);
 
-            window.location.href = "/user_info/"
+            setTimeout(() => {
+                window.location.href = "/user_info/";
+              }, 3000);
         }
     } catch (error) {
         console.log("haha")
-        $("input[value='Create account']").attr('value', "Not Sucessful. Try Again.")
+        $("input[value='Create account']").attr('value', "Not Sucessful. Please try again.")
 
 
 
@@ -37,7 +41,7 @@ async function register() {
 };
 
 async function login() {
-    logusername = $("#signin-email").val()
+    logusername = $("#signin-username").val()
     logpasswords = $("#signin-password").val()
 
     console.log(logusername)
@@ -50,7 +54,6 @@ async function login() {
 
             $("input[value='Login']").attr('value', "Success")
             currentuser = result.data
-
 
             localStorage.setItem('currentusername', currentuser.name);
             localStorage.setItem('currentuserjwt', currentuser.jwt);
@@ -69,10 +72,13 @@ async function login() {
             // getprivate()
 
             //window.location.href = "horoscope.html"
+            setTimeout(() => {
+                window.location.href = "../horoscope.html";
+            }, 1500);
         }
     } catch (error) {
         console.log(error)
-        $("input[value='Login']").attr('value', "Not Sucessful. Try Again.")
+        $("input[value='Login']").attr('value', "Not Sucessful. Incorrect username or password.")
 
 
 
@@ -111,14 +117,18 @@ function getZodiacSign(day, month) {
     }
 }
 
+function _calculateAge(birthday) { // birthday is a date
+    var ageDifMs = Date.now() - birthday.getTime();
+    var ageDate = new Date(ageDifMs); // miliseconds from epoch
+    return Math.abs(ageDate.getUTCFullYear() - 1970);
+}
+
 
 
 
 $(document).ready(() => {
 
     const $root = $('body');
-
-
 
     $("input[value='Create account']").on('click', register);
     $("input[value='Login']").on('click', login);

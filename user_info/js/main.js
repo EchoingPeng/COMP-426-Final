@@ -45,6 +45,15 @@
         $("#email").attr("value", "")
         $("#gender").attr("value", "")
         $(".noUi-tooltip").attr("value", "")
+        $("#fav-horoscope").attr("value", "")
+        console.log("Reset all attrs");
+    });
+
+    $('#cancel').on('click', function() {
+        // $('#register-form').trigger('reset');
+        console.log("cancel");
+ 
+        window.location.href = "../index.html"
     });
 
     $('#register-form').validate({
