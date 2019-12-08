@@ -122,7 +122,7 @@ const zodiacData = [{
     dateRange: "November 22 - December 21",
 }, {
     id: 12,
-    name: "Capricon",
+    name: "Capricorn",
     element: "earth",
     compat: "Taurus, Cancer",
     img: "zodiac_icons/png/capricorn-sign.png",
