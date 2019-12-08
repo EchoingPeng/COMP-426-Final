@@ -9,13 +9,16 @@ async function register() {
     birthday = $("#datepicker").datepicker('getDate')
     zodiacsign = getZodiacSign(birthday.getDate(), birthday.getMonth())
 
-    console.log(zodiacsign);
-    console.log(birthday);
-    console.log(_calculateAge(birthday));
+    // console.log(zodiacsign);
+    // console.log(birthday);
+    // console.log(_calculateAge(birthday));
+
+
+
 
     try {
         const result = await axios.post(`http://localhost:3000/account/create`, { 'name': username, "pass": passwords, "data": { "birthday": birthday, "sign": zodiacsign } })
-        console.log(result)
+
         if (result.status == 200) {
             $("input[value='Create account']").attr('value', "success")
 
@@ -25,13 +28,16 @@ async function register() {
             localStorage.setItem('currentuserjwt', currentuser.jwt);
             localStorage.setItem('currentzodiac', currentuser.data.sign);
             localStorage.setItem('currentbirthday', currentuser.data.birthday);
-
+            localStorage.setItem('currentage', _calculateAge(birthday.getYear()));
+            console.log(_calculateAge(birthday.getYear()))
             setTimeout(() => {
                 window.location.href = "/user_info/";
-              }, 3000);
+            }, 300);
         }
     } catch (error) {
+
         console.log("haha")
+        console.log(error)
         $("input[value='Create account']").attr('value', "Not Sucessful. Please try again.")
 
 
@@ -59,6 +65,7 @@ async function login() {
             localStorage.setItem('currentuserjwt', currentuser.jwt);
             localStorage.setItem('currentzodiac', currentuser.data.sign);
             localStorage.setItem('currentbirthday', currentuser.data.birthday);
+
             console.log("Bearer "  +  localStorage.getItem('currentuserjwt') )
 
 
@@ -117,10 +124,10 @@ function getZodiacSign(day, month) {
     }
 }
 
-function _calculateAge(birthday) { // birthday is a date
-    var ageDifMs = Date.now() - birthday.getTime();
-    var ageDate = new Date(ageDifMs); // miliseconds from epoch
-    return Math.abs(ageDate.getUTCFullYear() - 1970);
+function _calculateAge(year) { // birthday is a date
+    // var ageDifMs = Date.now() - birthday.getTime();
+    // var ageDate = new Date(ageDifMs); // miliseconds from epoch
+    return new Date().getFullYear() - (year + 1900);
 }
 
 
