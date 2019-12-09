@@ -525,3 +525,28 @@ x sigin/signup popup
 .cd-signin-modal__block.cd-signin-modal__block--is-selected {
     display: block;
 }
+
+
+.footer{
+    background-color: #222831;
+    color: lemonchiffon;
+    padding: 40px 0;
+}
+
+.footer p, strong{
+    color: lemonchiffon;
+}
+
+.footer a:hover{
+    color: crimson;
+}
+
+.fa{ 
+    color: lemonchiffon;
+    margin: 10px
+}
+    
+::selection {
+    background-color:#DEF4FF
+}
+    text-indent: 100%;
