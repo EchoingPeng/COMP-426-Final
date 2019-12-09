@@ -186,9 +186,11 @@ const renderComment = function(user, body2, id, img) {
                                 <div class="media-content">
                                     <div class="content">
                                         <p>
-                                            <strong>${user}</strong>
+                                            <span class="has-text-weight-bold", style="font-size: 20px;" >${user}</span>
                                             <br>
-                                            ${body2}
+                                            <br>
+                                            <br>
+                                            <span class="has-text-dark", style="font-size: 18px;">${body2}</span>
                                         </p>
                                     </div>
                                     <div class="level-right">
