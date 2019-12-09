@@ -4,6 +4,20 @@
  * @param {*} ForYouData 
  */
 export const renderZodiac = function(foryoudata) {
+    let temp;
+    if (foryoudata.name == "Today's Horoscope") {
+        temp = "button has-background-danger is-light"
+    }
+    if (foryoudata.name == "Weekly Horoscope") {
+        temp = "button  has-background-warning is-light"
+    }
+    if (foryoudata.name == "Monthly Horoscope") {
+        temp = "button  has-background-primary is-light"
+    }
+    if (foryoudata.name == "Yearly Horoscope") {
+        temp = "button  has-background-info is-light"
+    }
+
     return `<div class="column is-3">
                 <div class="card" style="height: 100%;background-color: ${foryoudata.backgroundColor}">
                     <br>
@@ -15,7 +29,7 @@ export const renderZodiac = function(foryoudata) {
                     <div class="card-content has-text-centered">
                         <p class="title is-5 has-text-black has-text-weight-bold is-family-monospace" style="color: ${foryoudata.color}">${foryoudata.name}</p>
                         <div class="check">
-                            <button class="button is-link is-primary" data="${foryoudata.id}">Click Me!</button>
+                            <button class="${temp}" data="${foryoudata.id}">Click Me!</button>
                         </div>
                     </div>
                     
@@ -111,7 +125,7 @@ async function reHoro(event) {
 
 
     let $newHoro = $(
-        `<div id="newhoro">
+        `<div id="newhoro" >
             <div class="column is-full ">
                 <div class="box has-background-grey-lighter		" style="height: 100%>
                     <div class="media-content has-text-centered">
@@ -122,5 +136,6 @@ async function reHoro(event) {
                 </div>
             </div>
         </div>`);
-    $("#root").append($newHoro);
+    $("#root").append($newHoro)
+    $newHoro.show('slow');
 }

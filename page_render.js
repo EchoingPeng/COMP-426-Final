@@ -4,7 +4,7 @@
  */
 
 export const renderZodiac = function(zodiac) {
-    return `<div class="column is-one-third">
+    return `<div class="column is-one-third fade">
                 <div class="card" style="height: 100%;background-color: ${zodiac.backgroundColor};opacity:0.81">
                     <div class="card-image">
                     <br>

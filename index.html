@@ -124,8 +124,130 @@
             height: 70vh;
             width: 70vh;
             position: absolute;
-            z-index: 0;
+            z-index: -1;
             right: 20px;
+        }
+        
+        .fade {
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+        
+        .fade:hover {
+            opacity: 1;
+            transition: all 0.3s ease;
+        }
+        /* .grow:hover {
+            -webkit-transform: scale(1.3);
+            -ms-transform: scale(1.3);
+            transform: scale(1.3);
+        } */
+        
+        .card:hover {
+            box-shadow: 1px 1px #1d4363, 2px 2px #3d84be, 3px 3px #95b2ca;
+            -webkit-transform: translateX(-3px);
+            transform: translateX(-3px);
+            transition: all 0.3s ease;
+        }
+        
+        .divhero:hover {
+            box-shadow: 0 5px 35px 0px rgba(0, 0, 0, 0.1);
+        }
+        
+        .divhero:hover:before,
+        .divhero:hover:after {
+            /* display: block; */
+            content: '';
+            position: relative;
+            /* width: 250px;
+            height: 250px; */
+            background: #FDA8CF;
+            border-radius: 75px;
+            z-index: -1;
+            animation: 2s clockwise infinite;
+        }
+        
+        .divhero:hover:after {
+            background: #F3CE5E;
+            animation: 2s counterclockwise infinite;
+        }
+        
+        @keyframes clockwise {
+            0% {
+                top: -5px;
+                left: 0;
+            }
+            12% {
+                top: -2px;
+                left: 2px;
+            }
+            25% {
+                top: 0;
+                left: 5px;
+            }
+            37% {
+                top: 2px;
+                left: 2px;
+            }
+            50% {
+                top: 5px;
+                left: 0;
+            }
+            62% {
+                top: 2px;
+                left: -2px;
+            }
+            75% {
+                top: 0;
+                left: -5px;
+            }
+            87% {
+                top: -2px;
+                left: -2px;
+            }
+            100% {
+                top: -5px;
+                left: 0;
+            }
+        }
+        
+        @keyframes counterclockwise {
+            0% {
+                top: -5px;
+                right: 0;
+            }
+            12% {
+                top: -2px;
+                right: 2px;
+            }
+            25% {
+                top: 0;
+                right: 5px;
+            }
+            37% {
+                top: 2px;
+                right: 2px;
+            }
+            50% {
+                top: 5px;
+                right: 0;
+            }
+            62% {
+                top: 2px;
+                right: -2px;
+            }
+            75% {
+                top: 0;
+                right: -5px;
+            }
+            87% {
+                top: -2px;
+                right: -2px;
+            }
+            100% {
+                top: -5px;
+                right: 0;
+            }
         }
     </style>
 
@@ -133,30 +255,41 @@
 
 <body>
     <div class="background-container">
+
+
+
         <img class="img2" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/1231630/moon2.png" alt="">
         <div class="stars"></div>
         <div class="twinkling"></div>
         <div class="clouds"></div>
+
+
         <nav class="navbar" role="navigation" aria-label="dropdown navigation">
 
 
 
-            <div class="navbar-item">
-
-                </a>
-
-                <div class="navbar">
-                    <a class="navbar-item" href="index.html">
-                        <img src="img/logo-KTD.png" width="180" height="300">
+            <div class="navbar-item is-pulled-left">
+                <ul class="cd-main-nav__list js-signin-modal-trigger">
                     </a>
-                </div>
+
+                    <div class="navbar ">
+                        <a class="navbar-item" href="index.html">
+                            <img src="img/logo-KTD.png" width="180" height="300">
+                        </a>
+                    </div>
+
+                </ul>
             </div>
 
-            <ul class="cd-main-nav__list js-signin-modal-trigger">
 
-                <li><a class="cd-main-nav__item cd-main-nav__item--signin has-background-info" href="#0" data-signin="login">Sign in</a></li>
-                <li><a class="cd-main-nav__item cd-main-nav__item--signup" href="#0" data-signin="signup">Sign up</a></li>
-            </ul>
+            <div style="position: absolute; right: 2%;top: 50%; -ms-transform: translateY(-50%);transform: translateY(-50%);">
+                <ul class="cd-main-nav__list js-signin-modal-trigger">
+
+                    <li><a class="cd-main-nav__item cd-main-nav__item--signin has-background-info" href="#0" data-signin="login">Sign in</a></li>
+                    <li><a class="cd-main-nav__item cd-main-nav__item--signup" href="#0" data-signin="signup">Sign up</a></li>
+                </ul>
+            </div>
+
         </nav>
         <!-- <nav class="navbar is-dark" role="navigation" aria-label="dropdown navigation">
             <a class="navbar-item">
@@ -183,6 +316,19 @@
                 <li><a class="cd-main-nav__item cd-main-nav__item--signup" href="#0" data-signin="signup">Sign up</a></li>
             </ul>
         </nav> -->
+
+        <section class="hero is-primary is-small is-bold has-text-centered">
+            <div class="hero-body ">
+                <div class="container">
+                    <h1 class="title">
+                        Welcome to <span class="divhero">Know Thy Destiny</span>
+                    </h1>
+                    <h2 class="subtitle">
+                        A platform for you and other astrological fans to communicate and check life guidance.
+                    </h2>
+                </div>
+            </div>
+        </section>
         <div id="root"></div>
         <!-- <script src="node_modules/jquery/dist/jquery.js"></script> -->
         <!-- <script src="zodiacData.js"></script> -->
