@@ -5,10 +5,10 @@
  */
 export const renderZodiac = function(zodiac, thhoro) {
     return `<div class="column is-one-third">
-                <div class="card" style="height: 100%;background-color: ${zodiac.backgroundColor};opacity:0.81">
+                <div class="card" style="height: 100%;background-color: ${zodiac.backgroundColor}">
                     <div class="card-image">
                         <br>
-                        <br>
+                        
                         <figure class="image is-96x96" style="margin: 0 auto">
                             <img class="is-rounded" src="${zodiac.img}" alt="${zodiac.name}">
                         </figure>
@@ -36,6 +36,7 @@ async function loadCards(zodiacData) {
         modalCards.append(renderZodiac(zodiacData[i], thhoro));
     }
     $root.addClass('container zodiac_modalCards').append(modalCards);
+    $root.append(`<div id="allcomments"></div>`);
 
     let users = await getuser();
     for (let i = 0; i < users.result.length; i++) {
@@ -44,10 +45,10 @@ async function loadCards(zodiacData) {
         let body2 = body1.result;
         for (let j = 0; j < body2.length; j++) {
             let $comment2 = renderComment(user, body2[j], j);
-            $root.append($comment2);
+            $("#allcomments").append($comment2);
         }
     }
-
+    $root.append(`<br>`);
     creatComment();
 
     $("#root").on("click", ".newsubmit", submitComment);
@@ -79,25 +80,25 @@ async function getHoro(horo) {
 
 const creatComment = function() {
     let $newTweet = $(`
-    <div class="box">
-        <form>
-            <div class="field">
-            <label class="label">New Comment</label>
-            <div class="control">
-                <textarea id="text1" class="textarea" placeholder="What you want to say..."></textarea>
-            </div>
-            </div>
-        
-            <div class="field is-grouped">
-            <div class="newsubmit">
-                <button class="button is-link">Submit</button>
-            </div>
-            <div class="newcancel">
-                <button class="button is-link is-light">Cancel</button>
-            </div>
-            </div>
-        </form>
-    </div`);
+        <div class="box">
+            <form>
+                <div class="field">
+                <label class="label">New Comment</label>
+                <div class="control">
+                    <textarea id="text1" class="textarea" placeholder="What you want to say..."></textarea>
+                </div>
+                </div>
+            
+                <div class="field is-grouped">
+                <div class="newsubmit">
+                    <button class="button is-link">Submit</button>
+                </div>
+                <div class="newcancel">
+                    <button class="button is-link is-light">Cancel</button>
+                </div>
+                </div>
+            </form>
+        </div>`);
     $("#root").append($newTweet);
 }
 
@@ -123,17 +124,20 @@ async function postprivate() {
 async function submitComment(event) {
     event.preventDefault();
     let $comment = await postprivate();
-    // location.reload();
-    /*console.log($comment.result);
-    const $root = $('#root');
-    let user = $comment.result.path;
-    let body2 = $comment.result.posted.comment;
-    let $newcomment = renderComment(user, body2);
-    $root.append($newcomment);*/
+    let user = localStorage.currentusername;
+    let body1 = await getbody(user);
+    let body2 = body1.result;
+    let index = body2.length - 1;
+    let body3 = body2[index];
+    let $newcomment = renderComment(user, body3, index);
+    $("#allcomments").append($newcomment);
 }
 
 
 const renderComment = function(user, body2, id) {
+
+
+
     let $comment1 = $(` <div class="box">
                             <article class="media">
                                 <div class="media-left">
@@ -173,6 +177,7 @@ async function deleteco(event) {
         body2.splice(cid, 1);
         let $tweet2 = await deletecomments(evid2);
         let $comment2 = await postdelete(body2);
+        $(event.target).parent().parent().parent().parent().remove();
     }
 }
 
@@ -233,3 +238,9 @@ async function getbody(user) {
     return img;
 }*/
 console.log(localStorage);
+
+async function postprivatett() {
+    const result = await axios.post(`http://localhost:3000/private/a`, { data: ["haha"], type: "merge" }, { headers: { "Authorization": "Bearer " + localStorage.getItem('currentuserjwt') } })
+
+    return result.data
+}

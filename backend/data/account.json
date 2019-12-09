@@ -97,6 +97,13 @@
         "birthday": "2019-12-14T05:00:00.000Z",
         "sign": "scorpio"
       }
+    },
+    "ppp": {
+      "passwordHash": "$2b$10$Ivt8hUBKhm3y7Hi2LEh.Xuaafyauhj1uCO3YLnNJmV1SM9hsuSBi.",
+      "data": {
+        "birthday": "2010-12-05T05:00:00.000Z",
+        "sign": "scorpio"
+      }
     }
   }
 }
