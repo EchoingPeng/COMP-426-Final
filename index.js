@@ -17,7 +17,8 @@ async function register() {
         const result = await axios.post(`http://localhost:3000/account/create`, { 'name': username, "pass": passwords, "data": { "birthday": birthday, "sign": zodiacsign } })
         console.log(result)
         if (result.status == 200) {
-            $("input[value='Create account']").attr('value', "success")
+            $("input[value='Create Cccount']").attr('value', "Success")
+            $("input[value='Not Sucessful. Please try again.']").attr('value', "Success")
 
             const result = await axios.post(`http://localhost:3000/account/login`, { 'name': username, "pass": passwords })
             currentuser = result.data
@@ -28,7 +29,7 @@ async function register() {
             localStorage.setItem('currentage',  _calculateAge(birthday.getYear()));
 
             // setTimeout(() => {
-            console.log("redydyy")
+            // console.log("redydyy")
             window.location.href = "/user_info/"
                 //   }, 3000);
         }
@@ -55,6 +56,7 @@ async function login() {
         if (result.status == 200) {
 
             $("input[value='Login']").attr('value', "Success")
+            $("input[value='Not Sucessful. Incorrect username or password.']").attr('value', "Success")
             currentuser = result.data
 
             localStorage.setItem('currentusername', currentuser.name);

@@ -5,9 +5,11 @@
  */
 export const renderZodiac = function(zodiac, thhoro) {
     return `<div class="column is-one-third">
-                <div class="card" style="height: 100%;background-color: ${zodiac.backgroundColor}">
+                <div class="card" style="height: 100%;background-color: ${zodiac.backgroundColor};opacity:0.81">
                     <div class="card-image">
-                        <figure class="image is-128x128" style="margin: 0 auto">
+                        <br>
+                        <br>
+                        <figure class="image is-96x96" style="margin: 0 auto">
                             <img class="is-rounded" src="${zodiac.img}" alt="${zodiac.name}">
                         </figure>
                     </div>
@@ -121,7 +123,7 @@ async function postprivate() {
 async function submitComment(event) {
     event.preventDefault();
     let $comment = await postprivate();
-    location.reload();
+    // location.reload();
     /*console.log($comment.result);
     const $root = $('#root');
     let user = $comment.result.path;

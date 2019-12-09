@@ -1,4 +1,3 @@
-
 /**
  * Render function for each horoscope card
  * @param {*} zodiac 
@@ -6,9 +5,11 @@
 
 export const renderZodiac = function(zodiac) {
     return `<div class="column is-one-third">
-                <div class="card" style="height: 100%;background-color: ${zodiac.backgroundColor}">
+                <div class="card" style="height: 100%;background-color: ${zodiac.backgroundColor};opacity:0.81">
                     <div class="card-image">
-                        <figure class="image is-128x128" style="margin: 0 auto">
+                    <br>
+                    <br>
+                        <figure class="image is-96x96" style="margin: 0 auto">
                             <img class="is-rounded" src="${zodiac.img}" alt="${zodiac.name}">
                         </figure>
                     </div>
@@ -22,7 +23,7 @@ export const renderZodiac = function(zodiac) {
                         <div class="content is-size-8" style="color: ${zodiac.color}; max-height: 200px; overflow-y: scroll">
                             <p>${zodiac.description}</p>
                         </div>
-                        <button class="button is-link is-small link" data-zodiac="${zodiac.id}">More</button>
+                       
                     </div>
                 </div>
             </div>
@@ -48,12 +49,11 @@ export const loadCards = function(zodiacData) {
 $(function() {
     axios.get('http://localhost:3000/public/zodiacData', {
 
-                }).then(response => {
-                    let zodiacData = response.data.result;
-                    console.log(zodiacData);
-                    loadCards(zodiacData);
+    }).then(response => {
+        let zodiacData = response.data.result;
+        console.log(zodiacData);
+        loadCards(zodiacData);
 
-                }).catch(error => console.log(error.response))
-       
+    }).catch(error => console.log(error.response))
+
 });
-
