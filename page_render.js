@@ -1,8 +1,9 @@
-// const {publicStore} = require('backend/data/DataStore.js');
+
 /**
- * Render function for each zodiac card
+ * Render function for each horoscope card
  * @param {*} zodiac 
  */
+
 export const renderZodiac = function(zodiac) {
     return `<div class="column is-one-third">
                 <div class="card" style="height: 100%;background-color: ${zodiac.backgroundColor}">
@@ -43,6 +44,16 @@ export const loadCards = function(zodiacData) {
 
 };
 
+
 $(function() {
-    loadCards(zodiacData);
+    axios.get('http://localhost:3000/public/zodiacData', {
+
+                }).then(response => {
+                    let zodiacData = response.data.result;
+                    console.log(zodiacData);
+                    loadCards(zodiacData);
+
+                }).catch(error => console.log(error.response))
+       
 });
+
