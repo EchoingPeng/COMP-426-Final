@@ -82,17 +82,16 @@ async function yearHoro(horo) {
 }
 
 async function getZod() {
-    const  result  =  await  axios.get(`http://localhost:3000/user/record` , {  headers:  {  "Authorization":   "Bearer "  +  localStorage.getItem('currentuserjwt')  }  })
+    const result = await axios.get(`http://localhost:3000/user/record`, { headers: { "Authorization": "Bearer " + localStorage.getItem('currentuserjwt') } })
     console.log(result.data.result);
     return result.data;
-} 
- 
+} 
 async function reHoro(event) {
     $("#newhoro").remove();
     let evid = $(event.target).attr("data");
-    let evid1=await getZod();
+    let evid1 = await getZod();
     console.log(evid1);
-    let horo=evid1.result.zodiasign;
+    let horo = evid1.result.zodiasign;
     console.log(horo);
     let horo1;
     switch (evid) {
@@ -109,13 +108,17 @@ async function reHoro(event) {
             horo1 = await yearHoro(horo);
             break;
     }
+
+
     let $newHoro = $(
         `<div id="newhoro">
-            <div class="column is-full">
-                <div class="card" style="height: 100%;background-color: #ffc0cb">
-                    <div class="card-content has-text-centered">
-                        <p class="title is-5 has-text-black has-text-weight-bold is-family-monospace" style="color: "#ffffff">${horo1.horoscope}</p>
-                    </div>
+            <div class="column is-full ">
+                <div class="box has-background-grey-lighter		" style="height: 100%>
+                    <div class="media-content has-text-centered">
+                    <blockquote class="blockquote">
+                        <p class="title is-5 is-family-monospace">${horo1.horoscope}</p>
+                        </blockquote>
+                        </div>
                 </div>
             </div>
         </div>`);
