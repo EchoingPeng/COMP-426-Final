@@ -36,12 +36,12 @@ async function loadCards(zodiacData) {
     $root.addClass('container zodiac_modalCards').append(modalCards);
 
     let users = await getuser();
-    for(let i=0;i<users.result.length;i++){
-        let user=users.result[i];
-        let body1=await getbody(user);
-        let body2=body1.result;
-        for(let j=0;j<body2.length;j++){
-            let $comment2=renderComment(user,body2[j],j);
+    for (let i = 0; i < users.result.length; i++) {
+        let user = users.result[i];
+        let body1 = await getbody(user);
+        let body2 = body1.result;
+        for (let j = 0; j < body2.length; j++) {
+            let $comment2 = renderComment(user, body2[j], j);
             $root.append($comment2);
         }
     }
@@ -49,7 +49,7 @@ async function loadCards(zodiacData) {
     creatComment();
 
     $("#root").on("click", ".newsubmit", submitComment);
-    $("#root").on("click","#delete",deleteco);
+    $("#root").on("click", "#delete", deleteco);
 
     // pops up a new page with zodiac details (or jumps to another page?)
     // $root.on('click', '.link_detail', ... );
@@ -114,13 +114,14 @@ const creatComment = function() {
 }*/
 
 async function postprivate() {
-    const  result  =  await  axios.post(`http://localhost:3000/private/`+ localStorage.currentusername, { data: [$("#text1").val()] , type: "merge" },   {  headers:  {  "Authorization":   "Bearer "  +  localStorage.getItem('currentuserjwt')  }  })
+    const result = await axios.post(`http://localhost:3000/private/` + localStorage.currentusername, { data: [$("#text1").val()], type: "merge" }, { headers: { "Authorization": "Bearer " + localStorage.getItem('currentuserjwt') } })
     return result.data
 }
 
 async function submitComment(event) {
     event.preventDefault();
     let $comment = await postprivate();
+    location.reload();
     /*console.log($comment.result);
     const $root = $('#root');
     let user = $comment.result.path;
@@ -156,26 +157,25 @@ const renderComment = function(user, body2, id) {
 };
 
 async function deletecomments(user) {
-    const  result  =  await  axios.delete(`http://localhost:3000/private/` + user, {  headers:  {  "Authorization":   "Bearer "  +  localStorage.getItem('currentuserjwt')  }  })
+    const result = await axios.delete(`http://localhost:3000/private/` + user, { headers: { "Authorization": "Bearer " + localStorage.getItem('currentuserjwt') } })
     return result.data;
-} 
+}
 async function deleteco(event) {
     let evid2 = $(event.target).attr("data");
-    let cid=$(event.target).attr("index");
-    if(evid2!=localStorage.currentusername){
+    let cid = $(event.target).attr("index");
+    if (evid2 != localStorage.currentusername) {
         alert("You can only destroy comments that you created!")
-    }
-    else{
-        let body1=await getbody(evid2);
-        let body2=body1.result;
-        body2.splice(cid,1);
+    } else {
+        let body1 = await getbody(evid2);
+        let body2 = body1.result;
+        body2.splice(cid, 1);
         let $tweet2 = await deletecomments(evid2);
         let $comment2 = await postdelete(body2);
     }
 }
 
 async function postdelete(body2) {
-    const  result  =  await  axios.post(`http://localhost:3000/private/`+ localStorage.currentusername, { data: body2, type: "merge" },   {  headers:  {  "Authorization":   "Bearer "  +  localStorage.getItem('currentuserjwt')  }  })
+    const result = await axios.post(`http://localhost:3000/private/` + localStorage.currentusername, { data: body2, type: "merge" }, { headers: { "Authorization": "Bearer " + localStorage.getItem('currentuserjwt') } })
     return result.data
 }
 

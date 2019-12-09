@@ -76,6 +76,27 @@
         "birthday": "2019-08-12T04:00:00.000Z",
         "sign": "cancer"
       }
+    },
+    "yyyy": {
+      "passwordHash": "$2b$10$Ab8WQryv0kgHDmoixxpH1.Ue5iLF9E4cbe3I7x4QTGt4Z9ZCh5vsS",
+      "data": {
+        "birthday": "2019-12-21T05:00:00.000Z",
+        "sign": "scorpio"
+      }
+    },
+    "uuu": {
+      "passwordHash": "$2b$10$H5.Atb3q/8qIwAOhFTUrOeVaES9HoczxvhU1QlO08zXV0x7oYuSOq",
+      "data": {
+        "birthday": "2019-12-14T05:00:00.000Z",
+        "sign": "scorpio"
+      }
+    },
+    "yukun": {
+      "passwordHash": "$2b$10$8M.3yMoFIt7A/yeubfSw9OP.Es3scfHEnbh.MrXWA26FT1Fifm3b6",
+      "data": {
+        "birthday": "2019-12-14T05:00:00.000Z",
+        "sign": "scorpio"
+      }
     }
   }
 }

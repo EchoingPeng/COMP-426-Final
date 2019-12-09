@@ -20,7 +20,7 @@ async function showUser() {
 
         var marginSlider = document.getElementById('slider-margin');
         if (marginSlider != undefined) {
-            console.log(resultobj.age)
+
             noUiSlider.create(marginSlider, {
                 start: [resultobj.age],
                 step: 1,
@@ -42,25 +42,25 @@ async function showUser() {
 
 
     } catch (error) {
-        var marginSlider = document.getElementById('slider-margin');
-        if (marginSlider != undefined) {
-            console.log(localStorage.getItem('currentage'))
-            noUiSlider.create(marginSlider, {
-                start: [localStorage.getItem('currentage')],
-                step: 1,
-                connect: [true, false],
-                tooltips: [true],
-                range: {
-                    'min': 0,
-                    'max': 100
-                },
-                format: wNumb({
-                    decimals: 0,
-                    thousand: ','
+        var marginSlider = document.getElementById('slider-margin');
+        if (marginSlider != undefined) {
+            // console.log(resultobj.age)
+            noUiSlider.create(marginSlider, {
+                start: [localStorage.getItem('currentage')],
+                step: 1,
+                connect: [true, false],
+                tooltips: [true],
+                range: {
+                    'min': 0,
+                    'max': 100
+                },
+                format: wNumb({
+                    decimals: 0,
+                    thousand: ','
 
-                })
-            });
-        }
+                })
+            });
+        }
         $("input[value='Submit']").on("click", createUser)
 
     }
@@ -77,33 +77,36 @@ async function createUser() {
     displayname = $("#display_name").val();
     zodiasign = $("#zodi_sign").val();
     country = $("#country").val();
-    email = $("#email").val();
+    email = $("#email").val().toString();
     gender = $("#gender").val();
     age = $(".noUi-tooltip").text();
     favHoro = $("#fav-horoscope").val().toLowerCase();
 
-    
-    data = { displayname: displayname, zodiasign: zodiasign, country: country, email: email, gender: gender, age: age, favouriteHoroscope: favHoro}
+
+    data = { displayname: displayname, zodiasign: zodiasign, country: country, email: email, gender: gender, age: age, favouriteHoroscope: favHoro }
     try {
         console.log(data)
         const result = await axios.post(`http://localhost:3000/user/record`, { data: data }, { headers: { "Authorization": "Bearer " + currentjwt } })
         console.log("jahaha")
-    
+
         window.location.href = "../horoscope.html"
-          
-        
+
+
     } catch (error) {
 
-    } /*finally {
-        
-        window.location.href = "../horoscope.html"
-    }*/
+    }
+    /*finally {
+           
+           window.location.href = "../horoscope.html"
+       }*/
 
 };
 
 
 
 async function UpdateUser() {
+    event.preventDefault()
+
     console.log("enter update")
 
     currentuser = localStorage.getItem('currentusername')
@@ -119,13 +122,12 @@ async function UpdateUser() {
 
 
     // console.log(zodiasign)
-    data = { displayname: displayname, zodiasign: zodiasign, country: country, email: email, gender: gender, age: age, favouriteHoroscope: favHoro}
+    data = { displayname: displayname, zodiasign: zodiasign, country: country, email: email, gender: gender, age: age, favouriteHoroscope: favHoro }
     try {
-        
+
         const result = await axios.post(`http://localhost:3000/user/record`, { data: data }, { headers: { "Authorization": "Bearer " + currentjwt } })
-        console.log("haha"); 
-    } catch (error) {
-    } 
+        console.log("haha");
+    } catch (error) {}
 }
 
 

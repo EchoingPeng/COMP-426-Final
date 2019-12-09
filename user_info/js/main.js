@@ -50,6 +50,8 @@
     });
 
     $('#cancel').on('click', function() {
+        event.preventDefault()
+
         // $('#register-form').trigger('reset');
         console.log("cancel");
 
