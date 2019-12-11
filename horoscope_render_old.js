@@ -5,7 +5,7 @@
  */
 export const renderZodiac = function(zodiac, thhoro) {
     return `<div class="column is-one-third">
-                <div class="card" style="height: 100%;background-color: ${zodiac.backgroundColor}">
+                <div class="card fade" style="height: 100%;background-color: ${zodiac.backgroundColor}">
                     <div class="card-image">
                         <br>
                         
@@ -43,14 +43,14 @@ async function loadCards(zodiacData) {
         let user = users.result[i];
         let body1 = await getbody(user);
         let body2 = body1.result;
-        let zod=body2[0].toLowerCase();
-        let img=whichzodiac(zod);
-        for (let j = 1; j < body2.length; j++) {
+        let index = body2.length - 1;
+        let zod = body2[index].toLowerCase();
+        let img = whichzodiac(zod);
+        for (let j = 0; j < body2.length; j = j + 2) {
             let $comment2 = renderComment(user, body2[j], j, img);
             $("#allcomments").append($comment2);
         }
     }
-
     $root.append(`<br>`);
     $root.append(`<br>`);
     creatComment();
@@ -153,8 +153,8 @@ const creatComment = function() {
 }*/
 
 async function postprivate() {
-    let zod=localStorage.currentzodiac;
-    const result = await axios.post(`http://localhost:3000/private/` + localStorage.currentusername, { data: [zod, $("#text1").val()], type: "merge" }, { headers: { "Authorization": "Bearer " + localStorage.getItem('currentuserjwt') } })
+    let zod = localStorage.currentzodiac;
+    const result = await axios.post(`http://localhost:3000/private/` + localStorage.currentusername, { data: [$("#text1").val(), zod], type: "merge" }, { headers: { "Authorization": "Bearer " + localStorage.getItem('currentuserjwt') } })
     return result.data
 }
 
@@ -164,14 +164,16 @@ async function submitComment(event) {
     let user = localStorage.currentusername;
     let body1 = await getbody(user);
     let body2 = body1.result;
-    let index = body2.length-1;
-    let body3 = body2[index];
-    let zod=body2[0].toLowerCase();
-    let img=whichzodiac(zod);
+    let index1 = body2.length - 2;
+    let body3 = body2[index1];
+    let index2 = body2.length - 1;
+    let zod = body2[index2].toLowerCase();
+    let img = whichzodiac(zod);
     let $newcomment = renderComment(user, body3, index, img);
     $("#allcomments").append($newcomment);
     $("#text1").val("");
 }
+
 
 const renderComment = function(user, body2, id, img) {
     let $comment1 = $(` <div class="box">
@@ -184,9 +186,11 @@ const renderComment = function(user, body2, id, img) {
                                 <div class="media-content">
                                     <div class="content">
                                         <p>
-                                            <strong>${user}</strong>
+                                            <span class="has-text-weight-bold", style="font-size: 20px;" >${user}</span>
                                             <br>
-                                            ${body2}
+                                            <br>
+                                            <br>
+                                            <span class="has-text-dark", style="font-size: 18px;">${body2}</span>
                                         </p>
                                     </div>
                                     <div class="level-right">
@@ -211,7 +215,7 @@ async function deleteco(event) {
     } else {
         let body1 = await getbody(evid2);
         let body2 = body1.result;
-        body2.splice(cid, 1);
+        body2.splice(cid, 2);
         let $tweet2 = await deletecomments(evid2);
         let $comment2 = await postdelete(body2);
         $(event.target).parent().parent().parent().parent().remove();
@@ -252,33 +256,44 @@ getimg();*/
 
 const whichzodiac = function(zodiac) {
     let img;
-    switch(zodiac){
-        case "aquarius": img="zodiac_icons/png/aquarius-astrological-sign-symbol.png";
-        break;
-        case "pisces": img="zodiac_icons/png/pisces-astrological-sign.png";
-        break;
-        case "aries": img="zodiac_icons/png/aries-sign.png";
-        break;
-        case "taurus": img="zodiac_icons/png/taurus-astrological-sign-symbol-1.png";
-        break;
-        case "gemini": img="zodiac_icons/png/gemini-zodiac-sign-symbol.png";
-        break;
-        case "cancer": img="zodiac_icons/png/cancer-zodiac-sign-symbol.png";
-        break;
-        case "leo": img="zodiac_icons/png/leo-sign.png";
-        break;
-        case "virgo": img="zodiac_icons/png/virgo-astrological-symbol-sign-1.png";
-        break;
-        case "libra": img="zodiac_icons/png/libra-sign.png";
-        break;
-        case "scorpio": img="zodiac_icons/png/scorpion-astrological-sign.png";
-        break;
-        case "sagittarius": img="zodiac_icons/png/sagittarius-zodiac-symbol.png";
-        break;
-        case "capricorn": img="zodiac_icons/png/capricorn-sign.png";
-        break;
+    switch (zodiac) {
+        case "aquarius":
+            img = "zodiac_icons/png/aquarius-astrological-sign-symbol.png";
+            break;
+        case "pisces":
+            img = "zodiac_icons/png/pisces-astrological-sign.png";
+            break;
+        case "aries":
+            img = "zodiac_icons/png/aries-sign.png";
+            break;
+        case "taurus":
+            img = "zodiac_icons/png/taurus-astrological-sign-symbol-1.png";
+            break;
+        case "gemini":
+            img = "zodiac_icons/png/gemini-zodiac-sign-symbol.png";
+            break;
+        case "cancer":
+            img = "zodiac_icons/png/cancer-zodiac-sign-symbol.png";
+            break;
+        case "leo":
+            img = "zodiac_icons/png/leo-sign.png";
+            break;
+        case "virgo":
+            img = "zodiac_icons/png/virgo-astrological-symbol-sign-1.png";
+            break;
+        case "libra":
+            img = "zodiac_icons/png/libra-sign.png";
+            break;
+        case "scorpio":
+            img = "zodiac_icons/png/scorpion-astrological-sign.png";
+            break;
+        case "sagittarius":
+            img = "zodiac_icons/png/sagittarius-zodiac-symbol.png";
+            break;
+        case "capricorn":
+            img = "zodiac_icons/png/capricorn-sign.png";
+            break;
     }
     return img;
 }
 console.log(localStorage);
-
