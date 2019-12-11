@@ -104,6 +104,13 @@
         "birthday": "2010-12-05T05:00:00.000Z",
         "sign": "scorpio"
       }
+    },
+    "newly": {
+      "passwordHash": "$2b$10$zj1QvogCLVSxZ0lRRuwjx.9j1OXCQUhoz.DFbYeErR.V.oF6fpWke",
+      "data": {
+        "birthday": "2019-12-17T05:00:00.000Z",
+        "sign": "scorpio"
+      }
     }
   }
 }

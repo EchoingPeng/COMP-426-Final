@@ -14,14 +14,14 @@ export const renderZodiac = function(zodiac) {
                         </figure>
                     </div>
                     <div class="card-content has-text-centered">
-                        <p class="title is-5 has-text-black has-text-weight-bold is-family-monospace" style="color: ${zodiac.color}">${zodiac.name}</p>
-                        <p class="title is-5" style="color: ${zodiac.color}">Date Range: ${zodiac.dateRange}</p>
+                        <p class="title is-5 has-text-weight-bold" style="font-family:"Lato">${zodiac.name}</p>
+                        <p class="title is-5" style="font-family:"Open Sans">Date Range: ${zodiac.dateRange}</p>
 
                         <p class="subtitle is-6" style="color: ${zodiac.color}">Greatest Overall Compatibility: ${zodiac.compat}</p>
                         <p class="subtitle is-6" style="color: ${zodiac.color}">Lucky Numbers: ${zodiac.luckyNum}</p>
                         <p class="subtitle is-6" style="color: ${zodiac.color}">Element: ${zodiac.element}</p>
-                        <div class="content is-size-8" style="color: ${zodiac.color}; max-height: 200px; overflow-y: scroll">
-                            <p>${zodiac.description}</p>
+                        <div class="content" style="color: ${zodiac.color}; max-height: 200px; overflow-y: scroll">
+                            <p style="font-family:"Open Sans">${zodiac.description}</p>
                         </div>
                        
                     </div>

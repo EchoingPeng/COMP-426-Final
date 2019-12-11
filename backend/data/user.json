@@ -235,5 +235,15 @@
       "age": "31",
       "favouriteHoroscope": "aquarius"
     }
+  },
+  "newly": {
+    "record": {
+      "displayname": "",
+      "zodiasign": "scorpio",
+      "country": "中国",
+      "email": "yjl@nwu.edu.cn",
+      "age": "58",
+      "favouriteHoroscope": "sagittarius"
+    }
   }
 }
