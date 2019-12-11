@@ -189,6 +189,7 @@ const renderComment = function(user, body2, id, img) {
                                         <p>
                                             <strong style="color:black;font-size:20px">${user}</strong>
                                             <br>
+                                            <br>
                                             ${body2}
                                         </p>
                                     </div>

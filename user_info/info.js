@@ -70,7 +70,6 @@ async function showUser() {
 
 async function createUser() {
 
-
     currentuser = localStorage.getItem('currentusername');
     currentjwt = localStorage.getItem('currentuserjwt');
 
@@ -82,6 +81,25 @@ async function createUser() {
     age = $(".noUi-tooltip").text();
     favHoro = $("#fav-horoscope").val().toLowerCase();
 
+
+    const $blankNameMessage = $('#blankNameMessage');
+    const $blankzodiacMessage = $('#blankZodiacMessage');
+    const $blankCountryMessage = $('#blankCountryMessage');
+
+
+    if(displayname==="") {
+        $blankNameMessage.html('<span class="has-text-success" style="color:red">Please input your display name. </span>');
+        return;
+    }
+
+    if(zodiasign==="") {
+        $blankzodiacMessage.html('<span class="has-text-success" style="color:red">Please choose your zodiac. </span>');
+        return;
+    }
+    if(country==="") {
+        $blankCountryMessage.html('<span class="has-text-success" style="color:red">Please input your country or region. </span>');
+        return;
+    }
 
     data = { displayname: displayname, zodiasign: zodiasign, country: country, email: email, gender: gender, age: age, favouriteHoroscope: favHoro }
     try {
@@ -107,8 +125,6 @@ async function createUser() {
 async function UpdateUser() {
     event.preventDefault()
 
-    console.log("enter update")
-
     currentuser = localStorage.getItem('currentusername')
     currentjwt = localStorage.getItem('currentuserjwt')
 
@@ -120,6 +136,26 @@ async function UpdateUser() {
     age = $(".noUi-tooltip").text();
     favHoro = $("#fav-horoscope").val();
 
+    const $blankNameMessage = $('#blankNameMessage');
+    const $blankzodiacMessage = $('#blankZodiacMessage');
+    const $blankCountryMessage = $('#blankCountryMessage');
+
+
+    if(displayname==="") {
+        $blankNameMessage.html('<span class="has-text-success" style="color:red">Please input your display name. </span>');
+        return;
+    }
+
+    if(zodiasign==="") {
+        $blankzodiacMessage.html('<span class="has-text-success" style="color:red">Please choose your zodiac. </span>');
+        return;
+    }
+    if(country==="") {
+        $blankCountryMessage.html('<span class="has-text-success" style="color:red">Please input your country or region. </span>');
+        return;
+    }
+
+
 
     // console.log(zodiasign)
     data = { displayname: displayname, zodiasign: zodiasign, country: country, email: email, gender: gender, age: age, favouriteHoroscope: favHoro }
@@ -127,6 +163,7 @@ async function UpdateUser() {
 
         const result = await axios.post(`http://localhost:3000/user/record`, { data: data }, { headers: { "Authorization": "Bearer " + currentjwt } })
         console.log("haha");
+        location.reload();
     } catch (error) {}
 }
 
